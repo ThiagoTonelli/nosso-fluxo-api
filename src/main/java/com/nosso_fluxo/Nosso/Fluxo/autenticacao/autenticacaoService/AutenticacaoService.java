@@ -28,7 +28,7 @@ public class AutenticacaoService {
     public ResponseEntity loginUsuario(Usuario usuario) {
         if (usuarioRepository.existsByEmail(usuario.getEmail())) {
             String senhaUsuarioBD = usuarioRepository.findByEmail(usuario.getEmail()).getSenha();
-            if(passwordEncoder.matches(senhaUsuarioBD, usuario.getSenha())) {
+            if(passwordEncoder.matches(usuario.getSenha(), senhaUsuarioBD)) {
                 return ResponseEntity.ok().build();
             }
         }

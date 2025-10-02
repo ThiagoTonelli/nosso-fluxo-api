@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
-    @Bean
     boolean existsByEmail(String email);
-    @Bean
     Usuario findByEmail(String email);
 }
